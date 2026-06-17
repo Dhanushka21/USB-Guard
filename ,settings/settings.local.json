@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"G:\\\\USBGuard_v1_1\\\\USBGuard\" -Directory)",
+      "Bash(Select-Object -ExpandProperty Name)",
+      "Bash(python -m pip install \"joblib>=1.4.0\" \"scikit-learn>=1.5.0\" --upgrade)",
+      "Bash(python training\\\\train_model.py)",
+      "Bash(python \"training/train_model.py\")",
+      "PowerShell(dotnet publish *)",
+      "PowerShell(Get-Process *)",
+      "Bash(Get-ChildItem -Path \"E:\\\\USBGuard_v1_1\" -Recurse -Force)",
+      "Bash(Select-Object FullName, PSIsContainer)",
+      "PowerShell(Get-ChildItem -Path \"E:\\\\USBGuard_v1_1\\\\USBGuard\" -Recurse | Where-Object { -not \\($_.PSIsContainer\\) } | Select-Object @{Name=\"RelativePath\"; Expression={$_.FullName -replace [regex]::Escape\\(\"E:\\\\USBGuard_v1_1\\\\\"\\), \"\"}} | Format-Table -AutoSize)"
+    ]
+  }
+}

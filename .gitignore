@@ -1,0 +1,17 @@
+# Visual Studio
+.vs/
+
+# Python / build artifacts
+__pycache__/
+*.pyc
+*.pkl
+env/
+venv/
+
+# .NET build
+bin/
+obj/
+
+# Databases / local data
+*.db
+backend/data/

@@ -1,0 +1,51 @@
+root = true
+
+# Top-most EditorConfig file
+[*.{cs,csproj,sln,xml,config}]
+charset = utf-8
+end_of_line = crlf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+max_line_length = 120
+
+[*.cs]
+# C# specific
+dotnet_sort_system_directives_first = true
+csharp_new_line_before_open_brace = all
+csharp_new_line_between_methods = true
+csharp_preserve_single_line_blocks = false
+csharp_space_before_colon_in_inheritance_clause = false
+csharp_style_var_for_built_in_types = true:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+csharp_style_var_elsewhere = false:silent
+csharp_style_expression_bodied_methods = when_on_single_line:suggestion
+csharp_style_expression_bodied_properties = when_on_single_line:suggestion
+csharp_style_throw_expression = true:suggestion
+csharp_style_pattern_matching_over_is_with_cast_check = true:suggestion
+
+[*.{cs,csproj}]
+# File header enforcement (team should add a header template in CONTRIBUTING.md)
+insert_final_newline = true
+
+[*.md]
+trim_trailing_whitespace = false
+end_of_line = lf
+indent_style = space
+indent_size = 2
+
+[*.py]
+indent_style = space
+indent_size = 4
+max_line_length = 120
+
+[*.{json,yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# Binary files
+[*.png]
+binary = true
+[*.jpg]
+binary = true

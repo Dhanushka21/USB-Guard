@@ -1,0 +1,9 @@
+pywin32;sys_platform == 'win32'
+pyusb==1.2.1
+scikit-learn>=1.5.0
+numpy>=2.0.0
+pandas
+joblib>=1.4.0
+pycryptodome==3.19.0
+pytest>=7.4.0
+coverage>=7.3.0

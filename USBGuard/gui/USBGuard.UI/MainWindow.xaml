@@ -1,0 +1,166 @@
+<Window x:Class="USBGuard.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="USB Guard v1.0 — Ducky Detection"
+        Height="660" Width="920"
+        MinHeight="580" MinWidth="760"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F0F0">
+
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="196"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+
+    <!-- ══════════════ SIDEBAR ══════════════ -->
+    <Border Grid.Column="0" Background="#0d2a3e">
+      <DockPanel>
+
+        <!-- Logo header -->
+        <Border DockPanel.Dock="Top"
+                BorderBrush="#1a3a50" BorderThickness="0,0,0,0.5"
+                Padding="14,14,14,12">
+          <StackPanel Orientation="Horizontal">
+            <Border Width="32" Height="32" CornerRadius="8"
+                    Background="#1a4a6b">
+              <TextBlock Text="U" FontSize="15" FontWeight="Bold"
+                         Foreground="#5dcaa5"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"/>
+            </Border>
+            <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
+              <TextBlock Text="USB Guard"
+                         Foreground="White" FontSize="13"
+                         FontWeight="SemiBold"/>
+              <TextBlock x:Name="SidebarSubtitle"
+                         Text="Ducky Detection"
+                         Foreground="#5dcaa5" FontSize="10"/>
+            </StackPanel>
+          </StackPanel>
+        </Border>
+
+        <!-- User info + status at bottom -->
+        <Border DockPanel.Dock="Bottom"
+                BorderBrush="#1a3a50" BorderThickness="0,0.5,0,0"
+                Padding="12,10">
+          <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+              <Border Width="28" Height="28" CornerRadius="14"
+                      Background="#1a4a6b">
+                <TextBlock Text="AD" FontSize="9" FontWeight="Bold"
+                           Foreground="#5dcaa5"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+              </Border>
+              <StackPanel Margin="8,0,0,0" VerticalAlignment="Center">
+                <TextBlock Text="SLIIT\admin"
+                           Foreground="White" FontSize="11"
+                           FontWeight="SemiBold"/>
+                <TextBlock Text="Administrator"
+                           Foreground="#5A7A8A" FontSize="9"/>
+              </StackPanel>
+            </StackPanel>
+            <Border x:Name="StatusPill" CornerRadius="10"
+                    Padding="8,4" Background="#0D2A1F">
+              <StackPanel Orientation="Horizontal">
+                <Ellipse x:Name="StatusDot" Width="6" Height="6"
+                         Fill="#5dcaa5" Margin="0,0,6,0"
+                         VerticalAlignment="Center"/>
+                <TextBlock x:Name="StatusText" Text="Protected"
+                           Foreground="#5dcaa5" FontSize="10"
+                           VerticalAlignment="Center"/>
+              </StackPanel>
+            </Border>
+          </StackPanel>
+        </Border>
+
+        <!-- Navigation -->
+        <StackPanel DockPanel.Dock="Top" Margin="0,8,0,0">
+
+          <TextBlock Text="MONITOR" Foreground="#3A5A6A"
+                     FontSize="9" Margin="16,8,0,2"
+                     FontWeight="SemiBold"/>
+
+          <Button x:Name="NavDashboard" Style="{StaticResource NavBtn}"
+                  Click="NavDashboard_Click">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="▣" FontSize="11" Margin="0,0,8,0"
+                         VerticalAlignment="Center"/>
+              <TextBlock Text="Dashboard" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+
+          <Button x:Name="NavWhitelist" Style="{StaticResource NavBtn}"
+                  Click="NavWhitelist_Click">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="☑" FontSize="11" Margin="0,0,8,0"
+                         VerticalAlignment="Center"/>
+              <TextBlock Text="Whitelist" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+
+          <TextBlock Text="REPORTS" Foreground="#3A5A6A"
+                     FontSize="9" Margin="16,12,0,2"
+                     FontWeight="SemiBold"/>
+
+          <Button x:Name="NavAudit" Style="{StaticResource NavBtn}"
+                  Click="NavAudit_Click">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="≡" FontSize="13" Margin="0,0,8,0"
+                         VerticalAlignment="Center"/>
+              <TextBlock Text="Audit log" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+
+        </StackPanel>
+
+      </DockPanel>
+    </Border>
+
+    <!-- ══════════════ MAIN CONTENT ══════════════ -->
+    <DockPanel Grid.Column="1">
+
+      <!-- Topbar -->
+      <Border DockPanel.Dock="Top" Height="46" Background="White"
+              BorderBrush="#CCCCCC" BorderThickness="0,0,0,0.5"
+              Padding="18,0">
+        <DockPanel VerticalAlignment="Center">
+          <TextBlock x:Name="PageTitle" Text="Dashboard"
+                     FontSize="14" FontWeight="SemiBold"
+                     Foreground="#1A1A1A"
+                     VerticalAlignment="Center"/>
+          <StackPanel DockPanel.Dock="Right"
+                      Orientation="Horizontal"
+                      HorizontalAlignment="Right">
+            <Border CornerRadius="6" Padding="10,4" Margin="0,0,8,0"
+                    x:Name="TopbarStatus" Background="#EAF3DE">
+              <StackPanel Orientation="Horizontal">
+                <Ellipse x:Name="TopbarDot" Width="7" Height="7"
+                         Fill="#1D9E75" Margin="0,0,5,0"
+                         VerticalAlignment="Center"/>
+                <TextBlock x:Name="TopbarText" Text="All clear"
+                           FontSize="11" Foreground="#3B6D11"
+                           VerticalAlignment="Center"/>
+              </StackPanel>
+            </Border>
+          </StackPanel>
+        </DockPanel>
+      </Border>
+
+      <!-- Connection status bar -->
+      <Border x:Name="ConnectionBar" DockPanel.Dock="Top"
+              Background="#FAEEDA" Padding="14,6"
+              Visibility="Visible">
+        <TextBlock x:Name="ConnectionText"
+                   Text="Connecting to backend..."
+                   FontSize="11" Foreground="#854F0B"/>
+      </Border>
+
+      <!-- Page frame -->
+      <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"
+             Background="White"/>
+
+    </DockPanel>
+  </Grid>
+</Window>

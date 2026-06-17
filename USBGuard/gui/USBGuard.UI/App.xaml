@@ -1,0 +1,120 @@
+<Application x:Class="USBGuard.UI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Application.Resources>
+
+    <!-- ── Brand colours ── -->
+    <SolidColorBrush x:Key="NavyBrush"      Color="#0d2a3e"/>
+    <SolidColorBrush x:Key="NavyMidBrush"   Color="#1a4a6b"/>
+    <SolidColorBrush x:Key="TealBrush"      Color="#5dcaa5"/>
+    <SolidColorBrush x:Key="TealDarkBrush"  Color="#0F6E56"/>
+    <SolidColorBrush x:Key="GreenBrush"     Color="#1D9E75"/>
+    <SolidColorBrush x:Key="GreenLightBrush" Color="#EAF3DE"/>
+    <SolidColorBrush x:Key="GreenDarkBrush" Color="#3B6D11"/>
+    <SolidColorBrush x:Key="RedBrush"       Color="#E24B4A"/>
+    <SolidColorBrush x:Key="RedLightBrush"  Color="#F09595"/>
+    <SolidColorBrush x:Key="RedBgBrush"     Color="#FCEBEB"/>
+    <SolidColorBrush x:Key="RedDarkBrush"   Color="#A32D2D"/>
+    <SolidColorBrush x:Key="AmberBrush"     Color="#EF9F27"/>
+    <SolidColorBrush x:Key="SurfaceBrush"   Color="#F4F4F4"/>
+    <SolidColorBrush x:Key="BorderBrush2"   Color="#CCCCCC"/>
+    <SolidColorBrush x:Key="TextSecondary"  Color="#666666"/>
+
+    <!-- ── Button: Primary (navy/teal) ── -->
+    <Style x:Key="PrimaryBtn" TargetType="Button">
+      <Setter Property="Background"       Value="#0d2a3e"/>
+      <Setter Property="Foreground"       Value="#5dcaa5"/>
+      <Setter Property="BorderThickness"  Value="0"/>
+      <Setter Property="Padding"          Value="14,7"/>
+      <Setter Property="FontSize"         Value="12"/>
+      <Setter Property="Cursor"           Value="Hand"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Background="{TemplateBinding Background}"
+                    CornerRadius="6"
+                    Padding="{TemplateBinding Padding}">
+              <ContentPresenter HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+      <Style.Triggers>
+        <Trigger Property="IsMouseOver" Value="True">
+          <Setter Property="Background" Value="#1a4a6b"/>
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+
+    <!-- ── Button: Danger (red) ── -->
+    <Style x:Key="DangerBtn" TargetType="Button" BasedOn="{StaticResource PrimaryBtn}">
+      <Setter Property="Background" Value="#E24B4A"/>
+      <Setter Property="Foreground" Value="White"/>
+      <Style.Triggers>
+        <Trigger Property="IsMouseOver" Value="True">
+          <Setter Property="Background" Value="#C03A39"/>
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+
+    <!-- ── Button: Amber ── -->
+    <Style x:Key="AmberBtn" TargetType="Button" BasedOn="{StaticResource PrimaryBtn}">
+      <Setter Property="Background"      Value="#FAEEDA"/>
+      <Setter Property="Foreground"      Value="#854F0B"/>
+      <Setter Property="BorderThickness" Value="0.5"/>
+      <Setter Property="BorderBrush"     Value="#FAC775"/>
+    </Style>
+
+    <!-- ── Button: Ghost (gray) ── -->
+    <Style x:Key="GhostBtn" TargetType="Button" BasedOn="{StaticResource PrimaryBtn}">
+      <Setter Property="Background"      Value="#F4F4F4"/>
+      <Setter Property="Foreground"      Value="#444444"/>
+      <Setter Property="BorderThickness" Value="0.5"/>
+      <Setter Property="BorderBrush"     Value="#CCCCCC"/>
+      <Style.Triggers>
+        <Trigger Property="IsMouseOver" Value="True">
+          <Setter Property="Background" Value="#E8E8E8"/>
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+
+    <!-- ── Card border ── -->
+    <Style x:Key="Card" TargetType="Border">
+      <Setter Property="Background"      Value="White"/>
+      <Setter Property="BorderBrush"     Value="#CCCCCC"/>
+      <Setter Property="BorderThickness" Value="0.5"/>
+      <Setter Property="CornerRadius"    Value="8"/>
+    </Style>
+
+    <!-- ── Sidebar nav button ── -->
+    <Style x:Key="NavBtn" TargetType="Button">
+      <Setter Property="Background"                Value="Transparent"/>
+      <Setter Property="Foreground"                Value="#7A9BAE"/>
+      <Setter Property="BorderThickness"           Value="0"/>
+      <Setter Property="FontSize"                  Value="12"/>
+      <Setter Property="Padding"                   Value="12,9"/>
+      <Setter Property="HorizontalContentAlignment" Value="Left"/>
+      <Setter Property="Cursor"                    Value="Hand"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border x:Name="bg" Background="{TemplateBinding Background}"
+                    CornerRadius="6" Margin="6,1"
+                    Padding="{TemplateBinding Padding}">
+              <ContentPresenter HorizontalAlignment="Left"
+                                VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="bg" Property="Background" Value="#0F2030"/>
+                <Setter Property="Foreground" Value="#AACCDD"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+  </Application.Resources>
+</Application>

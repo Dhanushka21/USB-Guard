@@ -1,0 +1,57 @@
+<Page x:Class="USBGuard.UI.Pages.AuditLogPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="#F0F0F0">
+
+  <Border Padding="16">
+    <StackPanel>
+
+    <!-- Controls row -->
+    <DockPanel Margin="0,0,0,12">
+      <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+        <Button Content="Export CSV"  Style="{StaticResource GhostBtn}"
+                Padding="10,7" Margin="0,0,8,0" Click="ExportCsv_Click"/>
+        <Button Content="Export JSON" Style="{StaticResource GhostBtn}"
+                Padding="10,7" Click="ExportJson_Click"/>
+      </StackPanel>
+      <ComboBox x:Name="FilterBox" Width="130" Height="32"
+                FontSize="12" Margin="0,0,8,0" DockPanel.Dock="Right"
+                SelectionChanged="FilterBox_Changed">
+        <ComboBoxItem Content="All events"  IsSelected="True"/>
+        <ComboBoxItem Content="BLOCK"/>
+        <ComboBoxItem Content="ALLOW"/>
+        <ComboBoxItem Content="ALLOW_WHITELIST"/>
+      </ComboBox>
+      <TextBox x:Name="LogSearch" Height="32" FontSize="12"
+               Padding="10,0" VerticalContentAlignment="Center"
+               BorderBrush="#CCCCCC" BorderThickness="0.5"
+               TextChanged="LogSearch_Changed"/>
+    </DockPanel>
+
+    <!-- Table -->
+    <Border Style="{StaticResource Card}">
+      <ListView x:Name="LogView" BorderThickness="0"
+                FontSize="12" MaxHeight="500" Background="White">
+        <ListView.View>
+          <GridView>
+            <GridViewColumn Header="Timestamp (UTC)" Width="130"
+              DisplayMemberBinding="{Binding Timestamp}"/>
+            <GridViewColumn Header="Device"          Width="200"
+              DisplayMemberBinding="{Binding Device}"/>
+            <GridViewColumn Header="Score"           Width="60"
+              DisplayMemberBinding="{Binding Score}"/>
+            <GridViewColumn Header="Decision"        Width="120"
+              DisplayMemberBinding="{Binding Decision}"/>
+            <GridViewColumn Header="Chain hash"      Width="90"
+              DisplayMemberBinding="{Binding Hash}"/>
+          </GridView>
+        </ListView.View>
+      </ListView>
+    </Border>
+
+    <TextBlock Margin="0,8,0,0" FontSize="11" Foreground="#666"
+               Text="All entries AES-256 encrypted  ·  SHA-256 hash-chained  ·  tamper-evident"/>
+
+  </StackPanel>
+  </Border>
+</Page>
